@@ -1,0 +1,60 @@
+.navbar{
+  border-bottom: 1px solid gray !important;
+}
+.big-card{
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 5px;
+  height: 22rem;
+  width: 25rem;
+  margin:auto;
+  background-color: #d3e3f2;
+}
+.email-input,.password-input{
+  outline: 1px solid black;
+  height: 35px;
+  width: 100%;
+  border-radius: 3px;
+  padding: 2px 3px;
+  background-color: #d3e3f2;
+}
+
+.btn{
+  width: 100%;
+}
+
+.blue-profile-bg{
+  height: 300px;
+  width: 100%;
+  background-color: #1e2875;
+  position: absolute;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.profile-parent-card{
+  height: 1000px;
+  background: white;
+  width: 90%;
+  position: relative;
+  top: 120px;
+  border-radius: 10px;
+}
+
+.profile-first-col{
+  height: 100%;
+  background: red;
+  margin: 0px !important;
+}
+
+.profile-second-col{
+  height: 100%;
+  background: pink;
+  margin: 0px !important;
+}
+
+.profile-photo{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 50px;
+}
