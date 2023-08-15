@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
+import { useNavigate } from "react-router-dom";
+import Https from '../servises/Https'
 
 function Login() {
+  const navigate = useNavigate();
   const initData = {
     email : "",
     password : ""
@@ -16,11 +19,17 @@ function Login() {
   }
 
   function handdleSubmit(){
-    console.log(inputData);
+    Https.Login(inputData).then((res)=>{
+      localStorage.setItem('userid',res.data);
+      navigate("/profile")
+      alert("Login Success")
+    }).catch((err)=>{
+      alert(err)
+    })
   }
 
   return (
-    <div>
+    <div className='login-page'>
       <h2 className='my-4 text-center'>Login</h2>
       <div className='big-card p-5'>
         <label className="block my-2" htmlFor="email"> Email</label>

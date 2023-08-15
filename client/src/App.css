@@ -1,13 +1,48 @@
-.navbar{
-  border-bottom: 1px solid gray !important;
+.dashboard-div{
+  font-size: 20px;
+  width: 180px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: rgba(34, 34, 34, 0.9);
+  border: 0.89px solid rgba(0, 0, 0, 0.15);
+  margin: 20px auto;
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+  margin-left:40px;
+  font-weight: 500;
+
+}
+.mynavbar{
+  height: 100px;
+  border-bottom: 0.89px solid rgba(206, 206, 206, 1);
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-color: white;
+}
+.blue-color{
+  color:#1e2875
+}
+
+.gray-color{
+  color: rgba(73, 69, 79, 0.8);
 }
 .big-card{
   border: 1px solid rgb(170, 170, 170);
   border-radius: 5px;
-  height: 22rem;
+  /* height: 22rem; */
+  height: auto;
   width: 25rem;
   margin:auto;
-  background-color: #d3e3f2;
+  /* background-color: #d3e3f2; */
+  border: 1.78px solid rgba(235, 235, 238, 1);
+    box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 .email-input,.password-input{
   outline: 1px solid black;
@@ -15,7 +50,7 @@
   width: 100%;
   border-radius: 3px;
   padding: 2px 3px;
-  background-color: #d3e3f2;
+  /* background-color: #d3e3f2; */
 }
 
 .btn{
@@ -28,33 +63,239 @@
   background-color: #1e2875;
   position: absolute;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 20px; 
+}
+
+.blue-connection-bg{
+  height: 120px;
+  width: 100%;
+  background-color: #1e2875;
+  border-radius: 10px;
+  margin-top: 20px; 
 }
 
 .profile-parent-card{
-  height: 1000px;
   background: white;
+  height: auto;
   width: 90%;
   position: relative;
   top: 120px;
   border-radius: 10px;
+  box-shadow: 0px 0px 20px 0px gray;
+  margin-bottom: 100px;
 }
 
 .profile-first-col{
   height: 100%;
-  background: red;
+  /* background: red; */
   margin: 0px !important;
 }
 
 .profile-second-col{
   height: 100%;
-  background: pink;
+  /* background: pink; */
   margin: 0px !important;
 }
 
 .profile-photo{
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
   margin: 50px;
+  background-color: #FFA78D;
+}
+
+.profile-photo-update-btn,.edit-btn{
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  margin: auto 0;
+  background: #F0EFFA;
+}
+
+.profile-photo-update-btn{
+  margin: auto 30px;
+}
+
+.profile-photo-update-btn:hover,.edit-btn:hover{
+  background: white;
+}
+
+.user-details-parent,.about-parent{
+  /* border: 1px solid black; */
+  border: 1.78px solid rgba(235, 235, 238, 1);
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: auto;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.star-img{
+  height: 100px;
+  width: 100px;
+}
+
+.certification-parent{
+  border-radius: 100px;
+  border: 1.78px solid rgba(235, 235, 238, 1);
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: auto;
+  width: 90%;
+  height: 100px;
+}
+
+.medal-img{
+  height: 60px;
+  width: 60px;
+}
+
+.company-logo-img{
+  width: 80px;
+}
+
+.user-card-parent{
+  border: 1.78px solid rgba(235, 235, 238, 1);
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+  height: 14rem;
+  border-radius: 10px;
+}
+
+.connection-btn{
+  width: 180px;
+  height: 35px;
+  border-radius: 20px;
+  background: rgba(186, 182, 235, 1);
+}
+
+.w-80{
+  width:100%;
+}
+
+.sidebar{
+  width: 300px;
+  /* background-color: #1e2875; */
+  position: absolute;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile-page,.connection-page{
+  position: relative;
+  /* width: 0%; */
+  float: right;
+  margin-top: 100px;
+}
+
+.sidebar-btn{
+    font-size: 20px;
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(26, 21, 88, 1);
+}
+.arrow{
+  height: 20px;
+  margin: auto 10px;
+}
+
+.notification-logo{
+  height: 30px;
+  margin: auto 10px;
+}
+
+.dp-top{
+  height: 45px;
+}
+
+.arrow-down{
+  height: 30px;
+}
+
+.navbar-user-info{
+  border: 1.78px solid rgba(235, 235, 238, 1);
+  box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+  border-radius: 10px;
+  width: 280px;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 20px;
+  margin: auto 25px;
+}
+
+.logout-parent{
+  display: flex;
+  justify-content: flex-end;
+  height: 65vh;
+  flex-direction: column;
+  margin: 0 50px;
+}
+
+.login-page,.sign-page{
+  width: 100%;
+  /* z-index: 100; */
+  margin-top: 100px;
+  position: absolute;
+}
+@media only screen and (min-width: 992px) {
+  .w-80 {
+   width: 70%;
+  }
+  .profile-parent-card{
+    width: 95%;
+  }
+}
+
+
+.modalbtn{
+  position: absolute;
+  z-index: 100000;
+}
+
+.modall{
+  position: absolute;
+  z-index: 100000;
+}
+
+.modal-footer{
+  flex-wrap: initial !important;
+}
+
+.modal-btn{
+  display: inline;
+  width: 50%;
+}
+.delete-btn{
+  width: 70px;
+  padding: 5px;
+  margin: auto 10px;
+
+}
+.delete-exp{
+display: flex !important;
+justify-content: center !important;
+}
+@media only screen and (min-width: 1200px) {
+  .w-80 {
+   width: 75%;
+  }
+  .profile-parent-card{
+    width: 95%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .w-80 {
+   width: 80%;
+  }
+  .profile-parent-card{
+    width: 95%;
+  }
 }

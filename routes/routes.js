@@ -5,8 +5,8 @@ const router = Router();
 require("../db/conn")
 
 router.post('/api/getuser',async(req,res)=>{
-    const {username} = req.body;
-    await User.findOne({ _id : username }).then((data) => {
+    const {_id} = req.body;
+    await User.findOne({ _id }).then((data) => {
         if (data) {
             res.status(200).json(data);
         }
@@ -23,9 +23,9 @@ router.post('/api/getuser',async(req,res)=>{
 
 //update not working
 router.post('/api/update',async(req,res)=>{
-    const {userdetails} = req.body;
+    const {obj} = req.body;
     try {
-        await User.findOneAndUpdate({ _id: userdetails._id }, { userdetails }, { new: true }).then((data) => {
+        await User.findOneAndUpdate({ _id: obj._id }, { [obj.key] : obj.value }, { new: true }).then((data) => {
                 res.status(200).json(data);
             })
         } 
@@ -66,7 +66,7 @@ router.post('/api/login',async(req,res)=>{
         await User.findOne({ email: email }).then(async (data) => {
             if (data !== null) {
                 if (data.password === password) {
-                    res.status(200).json(data);
+                    res.status(200).json(data._id);
                 }
                 else {
                     res.status(401).json("Unauthorized");
@@ -85,8 +85,17 @@ router.post('/api/login',async(req,res)=>{
 router.post('/api/register',async (req,res)=>{
     const {newUser} = req.body;
     try{
-        await User.create(newUser).then((data)=>{
-            res.status(200).json("Success");
+        await User.findOne({ email: newUser.email }).then(async (data) => {
+            if (data === null) {
+                await User.create(newUser).then((data)=>{
+                    res.status(200).json("Success");
+                })
+            }
+            else {
+                console.log(data);
+                
+                res.status(401).json("Unauthorized");
+            }
         })
     }catch(err) {
         console.log(err);

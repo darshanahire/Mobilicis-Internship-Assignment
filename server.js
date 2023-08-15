@@ -1,12 +1,17 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-require('./db/conn');
+const cors = require("cors");
+const path = require("path");
+
 const cookieParser = require("cookie-parser");
+const router = require('./routes/routes');
+require('./db/conn');
+
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-const router = require('./routes/routes');
 app.use(router);
 
 app.listen(port,()=>{

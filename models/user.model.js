@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name:{
         type:String,
-        default:"temp"
+        default:"tempuser"
     },
     email:{
         type: String,
@@ -22,7 +22,8 @@ const UserSchema = new Schema({
         required:true
     },
     about:{
-        type:String
+        type:String,
+        default:"This is sample about please edit it."
     },
     skills:{
         type:Array
