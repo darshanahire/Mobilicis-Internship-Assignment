@@ -21,15 +21,15 @@ function Sidebar() {
         <div className='dashboard-div'>Dashboard</div>
         <div   className='flex mt-3'>
             <img className="arrow" src="./img/arrow.png" alt="" />
-            <Link className="sidebar-btn" to="/profile" ref={btnRef1} onClick={fun1}> My Profile </Link>
+            <Link className="sidebar-btn" to="/" ref={btnRef1} onClick={fun1}> My Profile </Link>
         </div>
         <div className='flex'>
             <img className="arrow" src="./img/arrow.png" alt="" />
             <Link className="sidebar-btn" to="/connections" ref={btnRef2} onClick={fun2}> My Connections </Link>
         </div>
         <div className='logout-parent'>
-        <Link className='nav-link' to="/register"> Register</Link>
-        <Link className='nav-link' to="/login"> Login</Link>
+        <Link className='nav-link my-2' to="/register"> Register</Link>
+        <Link className='nav-link my-2' to="/login"> Login</Link>
         </div>
     </div>
   )

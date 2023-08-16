@@ -20,6 +20,22 @@ router.post('/api/getuser',async(req,res)=>{
     })
 })
 
+router.post('/api/getconnection',async(req,res)=>{
+    const {_id} = req.body;
+    await User.findOne({ _id }).then((data) => {
+        if (data) {
+            res.status(200).json(data.connections);
+        }
+        else {
+            console.log("User Not Found");
+            res.status(404).json("Not Found");
+        }
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json("Internal Server Error");
+    })
+})
+
 
 //update not working
 router.post('/api/update',async(req,res)=>{
@@ -36,18 +52,35 @@ router.post('/api/update',async(req,res)=>{
 })
 
 router.post("/api/getallusers", async (req, res) => {
-    let data = await User.find();
-    res.status(200).json(data);
+    let data = await User.find({},{_id:1});
+    res.status(200).json(data.map((elem)=> elem._id));
 })
 
 
 // use possition to add user at 0th location
 router.post('/api/connect',async(req,res)=>{
-    const {me,you} = req.body;
+    const {myID,friendsId} = req.body;    
     try { 
-        await User.findOneAndUpdate({ username: me }, { $push: { connections: you} }, { new: true }).then(async (data) => {
-            await User.findOneAndUpdate({ username: you }, { $push: { connections: me} }, { new: true }).then((data) => {
-                res.status(200).json("Success");
+        await User.findOneAndUpdate({ _id: friendsId }, { $push: { connections: myID ,$position: 0} }, { new: true }).then(async (data) => {
+            await User.findOneAndUpdate({ _id: myID }, { $push: { connections: friendsId , $position: 0} }, { new: true }).then((data) => {
+                res.status(200).json(data.connections);
+        }).catch((err)=>{
+            console.log(err);
+            res.status(500).json("Internal Server Error");
+        })
+    })
+    } catch (err){
+        console.log(err)
+        res.status(500).json("Internal Server Error");
+    }
+})
+
+router.post('/api/disconnect',async(req,res)=>{
+    const {myID,friendsId} = req.body;
+    try { 
+        await User.findOneAndUpdate({ _id: friendsId }, { $pull: { connections:  myID , $position: 0} }, { new: true }).then(async (data) => {
+            await User.findOneAndUpdate({ _id: myID }, { $pull: { connections: friendsId , $position: 0} }, { new: true }).then((data) => {
+                res.status(200).json(data.connections);
         }).catch((err)=>{
             console.log(err);
             res.status(500).json("Internal Server Error");
@@ -61,7 +94,7 @@ router.post('/api/connect',async(req,res)=>{
 
 router.post('/api/login',async(req,res)=>{
     const { email, password } = req.body;
-
+    
     try {
         await User.findOne({ email: email }).then(async (data) => {
             if (data !== null) {

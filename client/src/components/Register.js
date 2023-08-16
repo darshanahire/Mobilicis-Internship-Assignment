@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import Https from "../servises/Https"
+import Swal from 'sweetalert2'
 
 function Register() {
   const navigate = useNavigate();
@@ -26,17 +27,34 @@ function Register() {
     if(inputData.password.length >= 6){
       Https.Register(inputData).then((res)=>{
         console.log(res);
-        alert("User Added");
+        Swal.fire(
+          'Success',
+          'Account Created Please Login',
+          'Success'
+        )
         navigate('/login');
       }).catch((err)=>{
-        alert(err)
+        Swal.fire(
+          'Error',
+          'Error Occurs',
+          'Error'
+        )
       })
     }
     else{
-      alert("Please enter long password")
+      Swal.fire(
+        'Warning',
+        'Please Enter Long Password',
+        'warning'
+      )
     }
   }
 
+  useEffect(()=>{
+    if(localStorage.getItem('userid') != null){
+      navigate("/")
+    }
+  },[])
   return (
     <div className='sign-page'>
       <h2 className='my-4 text-center'>SignUp</h2>

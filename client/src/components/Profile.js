@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Modals from './Modals';
 import Https from '../servises/Https'
+import Loader from './Loader';
 
 export default function Profile() {
   const [userData, setUserData] = useState();
   const [openModal, setopenModal] = useState(null);
-
+  const [loder,setLoder] = useState(true);
+  const navigate = useNavigate();
   function handdleChange(e) {
     setopenModal(null);
     if (e !== false) {
@@ -29,16 +32,19 @@ export default function Profile() {
     if (_id !== null) {
       Https.GetUser(_id).then((res) => {
         setUserData(res.data);
-        console.log(res.data);
-
+        setLoder(false);
       }).catch((err) => {
         console.log(err);
       })
+    }
+    else{
+      navigate('/login')
     }
   }, []);
 
   return (
     <>
+    {loder ?     <div className="spinner-profile"> <Loader/>  </div> : <>
       {openModal !== null ? openn(openModal) : <></>}
       <div className='profile-page w-80'>
         <div className='blue-profile-bg'>
@@ -46,9 +52,9 @@ export default function Profile() {
         <div className='profile-parent-card row mx-auto mb-5'>
           <div className='profile-first-col col-12 col-md-6'>
             <div className='d-flex justify-content-between'>
-              <img src="./img/dp2.png" alt="" className='profile-photo' />
+              <img src={userData?.img} alt="" className='profile-photo cursor-pointer' onClick={() => { setopenModal({ name: 'img', type: 'file', mno: 0 }); }} />
 
-              <button className='profile-photo-update-btn'>Update Photo</button>
+              <button className='profile-photo-update-btn' onClick={() => { setopenModal({ name: 'Img', type: 'file', mno: 0 }); }}>Update Photo</button>
             </div>
             <div className='user-details-parent'>
               <h6>Your Name</h6>
@@ -154,20 +160,25 @@ export default function Profile() {
             </div> */}
             <div className='d-flex justify-content-between items-center mx-5 mt-4 mb-3'>
               <h5>Education</h5>
-              <button className='edit-btn' onClick={() => { setopenModal(!openModal) }} >Edit</button>
+              <button className='edit-btn' onClick={() => { setopenModal({ name: 'education', type: 'text', mno: 6 }); }} >Edit</button>
             </div>
+            {userData?.education.map((elem, key) => {
+                return <div key={key}>
             <div className="about-parent my-3">
-              <h5 className='blue-color'>IIT HYDERABAD</h5>
+              <h5 className='blue-color'>{elem.name}</h5>
               <div className='d-flex justify-content-between mt-4'>
-                <h5>(2010-2014)</h5>
-                <h5>Btech</h5>
+                <h5>{elem.year}</h5>
+                <h5>{elem.type}</h5>
               </div>
-              <p className='pt-3 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatibus nulla repellendus quos consequatur fugiat, harum ipsam impedit debitis sed, fugit soluta cupiditate provident expedita!</p>
+              <p className='pt-3 text-justify'>{elem.about}</p>
             </div>
-
+            </div>
+            })}
           </div>
         </div>
       </div>
+</>
+}
     </>
   )
 }

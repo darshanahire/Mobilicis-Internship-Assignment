@@ -14,11 +14,17 @@
   font-weight: 500;
 
 }
+.mobile{
+  display: block !important;
+}
+.desktop{
+  display: none !important;
+}
 .mynavbar{
-  height: 100px;
+  height: 70px;
   border-bottom: 0.89px solid rgba(206, 206, 206, 1);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   float: right;
   position: fixed;
   z-index: 1;
@@ -97,12 +103,21 @@
   margin: 0px !important;
 }
 
+.spinner-profile{
+    z-index: 100000;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 .profile-photo{
   height: 120px;
   width: 120px;
   border-radius: 50%;
   margin: 50px;
-  background-color: #FFA78D;
+  /* background-color: #FFA78D; */
 }
 
 .profile-photo-update-btn,.edit-btn{
@@ -188,7 +203,7 @@
   position: relative;
   /* width: 0%; */
   float: right;
-  margin-top: 100px;
+  margin-top: 90px;
 }
 
 .sidebar-btn{
@@ -224,11 +239,11 @@
   box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
   padding: 3px;
   border-radius: 10px;
-  width: 280px;
+  /* width: 280px; */
   display: flex;
   justify-content: space-around;
-  margin-right: 20px;
-  margin: auto 25px;
+  margin:0;
+  /* margin: auto; */
 }
 
 .logout-parent{
@@ -290,6 +305,22 @@ justify-content: center !important;
   .profile-parent-card{
     width: 95%;
   }
+  .navbar-user-info{
+    margin: auto 25px;
+    width: 280px;
+    padding: 0;
+    margin-right: 20px;
+  }
+  .mynavbar{
+    justify-content: flex-end;
+    height: 90px;
+  }
+  .mobile{
+    display: none !important;
+  }
+  .desktop{
+    display: block !important;
+  }
 }
 @media only screen and (min-width: 1400px) {
   .w-80 {
@@ -297,5 +328,21 @@ justify-content: center !important;
   }
   .profile-parent-card{
     width: 95%;
+  }
+  .navbar-user-info{
+    margin: auto 25px;
+    width: 280px;
+    padding: 0;
+    margin-right: 20px;
+  }
+  .mynavbar{
+    justify-content: flex-end;
+    height: 90px;
+  }
+  .mobile{
+    display: none !important;
+  }
+  .desktop{
+    display: block !important;
   }
 }

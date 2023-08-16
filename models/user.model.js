@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+    img:{
+        type:String,
+        default:"./img/sample.png"
+    },
     name:{
         type:String,
         default:"tempuser"
