@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Https from '../servises/Https'
 import Swal from 'sweetalert2'
 
-function Login() {
+function Login(props) {
   const navigate = useNavigate();
   const initData = {
     email : "johndoe@example.com",
@@ -22,6 +22,7 @@ function Login() {
   function handdleSubmit(){
     Https.Login(inputData).then((res)=>{
       localStorage.setItem('userid',res.data);
+      props.userChanged(res.data)
       navigate("/")
     }).catch((err)=>{
       Swal.fire(
@@ -32,7 +33,7 @@ function Login() {
     })
   }
   useEffect(()=>{
-    if(localStorage.getItem('userid') != null){
+    if(props.id != null){
       navigate("/")
     }
   },[])

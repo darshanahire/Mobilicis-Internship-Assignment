@@ -128,11 +128,11 @@ function addEdu(){
 
  const handleSubmit = () =>{   
     setLoder(true);
-    const _id = localStorage.getItem("userid");    
+    const _id = localStorage.getItem("userid");
     const obj = {_id,'key' : props.data.name.toLowerCase(),'value': inputData.name ? inputData.name : inputData};
 
     Https.Update(obj).then((res)=>{
-      props.fun(obj);      
+      props.fun(obj);     
     }).catch((err)=>{
       alert(err)
     })

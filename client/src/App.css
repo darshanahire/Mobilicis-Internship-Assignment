@@ -228,6 +228,7 @@
 
 .dp-top{
   height: 45px;
+  border-radius: 50%;
 }
 
 .arrow-down{
@@ -235,7 +236,7 @@
 }
 
 .navbar-user-info{
-  border: 1.78px solid rgba(235, 235, 238, 1);
+  border: none;
   box-shadow: 0px 1.7777777910232544px 1.7777777910232544px 0px rgba(0, 0, 0, 0.1);
   padding: 3px;
   border-radius: 10px;
@@ -266,6 +267,9 @@
   }
   .profile-parent-card{
     width: 95%;
+  }
+  .navbar-user-info{
+    border: 1.78px solid rgba(235, 235, 238, 1);
   }
 }
 
@@ -298,6 +302,14 @@
 display: flex !important;
 justify-content: center !important;
 }
+
+.navbar-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 150px;
+}
+
 @media only screen and (min-width: 1200px) {
   .w-80 {
    width: 75%;
@@ -310,6 +322,8 @@ justify-content: center !important;
     width: 280px;
     padding: 0;
     margin-right: 20px;
+    border: 1.78px solid rgba(235, 235, 238, 1);
+
   }
   .mynavbar{
     justify-content: flex-end;
@@ -320,6 +334,9 @@ justify-content: center !important;
   }
   .desktop{
     display: block !important;
+  }
+  .dp-top{
+    border-radius: 10px;
   }
 }
 @media only screen and (min-width: 1400px) {
@@ -334,6 +351,7 @@ justify-content: center !important;
     width: 280px;
     padding: 0;
     margin-right: 20px;
+    border: 1.78px solid rgba(235, 235, 238, 1);
   }
   .mynavbar{
     justify-content: flex-end;
@@ -344,5 +362,8 @@ justify-content: center !important;
   }
   .desktop{
     display: block !important;
+  }
+  .dp-top{
+    border-radius: 10px;
   }
 }

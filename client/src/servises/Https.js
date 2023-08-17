@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const exportedObj = {
 
-    // baseURL: "http://localhost:5000/",
-    baseURL : "/",
+    baseURL: "http://localhost:5000/",
+    // baseURL : "/",
 
     async Register(newUser){
         const res = await axios.post(this.baseURL + "api/register",{newUser});
